@@ -431,6 +431,18 @@ func (o *Command) StringList(short string, long string, opts *Options) *[]string
 	return &result
 }
 
+// See func String documentation
+func (o *Command) StringListPositional(opts *Options) *string {
+	if opts == nil {
+		opts = &Options{}
+	}
+	opts.positional = true
+
+	// We supply a long name for documentation and internal logic
+	name := fmt.Sprintf(positionalArgName, o.name, len(o.args))
+	return o.StringList("", name, opts)
+}
+
 // IntList creates new integer list argument. This is the argument that is allowed to be present multiple times on CLI.
 // All appearances of this argument on CLI will be collected into the list of integers. If no argument
 // provided, then the list is empty. Takes same parameters as Int
