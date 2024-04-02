@@ -54,7 +54,7 @@ func (o *Command) addArg(a *arg) error {
 
 	if a.GetPositional() {
 		switch a.argType { // Secondary guard
-		case Flag, FlagCounter, StringList, IntList, FloatList, FileList:
+		case Flag, FlagCounter, IntList, FloatList, FileList:
 			return fmt.Errorf("argument type cannot be positional")
 		}
 		a.sname = ""
