@@ -111,7 +111,9 @@ func (o *Command) parsePositionals(inputArgs *[]string) error {
 				return err
 			}
 			oarg.reduce(j, inputArgs)
-			break // Positionals can only occur once
+			if oarg.unique {
+				break // Positionals can only occur once
+			}
 		}
 		// positional was unsatisfiable, use the default
 		if !oarg.parsed {
