@@ -432,7 +432,7 @@ func (o *Command) StringList(short string, long string, opts *Options) *[]string
 }
 
 // See func String documentation
-func (o *Command) StringListPositional(opts *Options) *string {
+func (o *Command) StringListPositional(opts *Options) *[]string {
 	if opts == nil {
 		opts = &Options{}
 	}
